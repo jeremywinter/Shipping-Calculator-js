@@ -8,7 +8,7 @@
   </head>
   <body>
 
-    <p>Amazon Shipping Calculator</p>
+    <p>Shipping Calculator</p>
     <p>Orders under $40 = +$10 shipping</p>
     <p>Orders over $40 = Free shipping</p>
 
@@ -44,26 +44,31 @@
         document.querySelector('.js-total-cost').innerHTML = `$${cost}`;
       }
       */
-
+      
       function calulateTotal() {
 
       const inputElem = document.querySelector('.js-cost');
-
       let cost = inputElem.value.trim(); // Fetching the string value
 
-        if (!isNaN(cost)) { // Checking if the input is a valid number
-          cost = Number(cost); // Converting the valid string to a number
-
-          if (cost < 40) {
-          cost = cost + 10;
-          } 
-          document.querySelector('.js-total-cost')
-            .innerHTML = `$${cost}`;
-        } else {
-          // Handle invalid input (non-numeric string)
-          document.querySelector('.js-total-cost') 
+      if (cost === '') {
+          document.querySelector('.js-total-cost') // checks for empty value
             .innerHTML = 'Please enter the cost of your order.';
-        }      
+
+          } else if (!isNaN(cost)) { // Checking if the input is a valid number
+            cost = Number(cost); // Converting the valid string to a number
+
+            if (cost < 40) {
+            cost = cost + 10;
+            } 
+            document.querySelector('.js-total-cost')
+              .innerHTML = `Total: $${cost}`;
+
+          } else {
+            // Handle invalid input (non-numeric string)
+            document.querySelector('.js-total-cost') 
+              .innerHTML = 'Please enter the cost of your order.';
+          }  
+
       }
       
     </script>
